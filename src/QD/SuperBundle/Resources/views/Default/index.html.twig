@@ -1,0 +1,9 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}Page qui dit bonjour{% endblock %}
+
+{% block body %}
+Hello {{ name }}! /// {{ method }}
+
+<a href='{{ path("bye", {"name" : name}) }}'>Aller vers Bye</a>
+{% endblock %}

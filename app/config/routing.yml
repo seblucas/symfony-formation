@@ -1,0 +1,8 @@
+qd_super:
+    resource: "@QDSuperBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+app:
+    resource: @AppBundle/Controller/
+    type:     annotation
