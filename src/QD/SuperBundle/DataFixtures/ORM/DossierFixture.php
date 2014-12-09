@@ -3,7 +3,8 @@
 
 namespace QD\SuperBundle\DataFixtures\ORM;
 
-use Doctrine\Common\DataFixtures\FixtureInterface;
+use Doctrine\Common\DataFixtures\AbstractFixture;
+use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use QD\SuperBundle\Entity\Dossier;
 
@@ -13,7 +14,7 @@ use QD\SuperBundle\Entity\Dossier;
  *
  * @author formation
  */
-class DossierFixture implements FixtureInterface {
+class DossierFixture extends AbstractFixture implements OrderedFixtureInterface {
     /**
      * {@inheritDoc}
      */
@@ -29,5 +30,15 @@ class DossierFixture implements FixtureInterface {
 
         $manager->persist($dossier);
         $manager->flush();
+        
+        $this->addReference('dossier-1', $dossier);
+    }
+    
+    /**
+     * {@inheritDoc}
+     */
+    public function getOrder()
+    {
+        return 1; // the order in which fixtures will be loaded
     }
 }
