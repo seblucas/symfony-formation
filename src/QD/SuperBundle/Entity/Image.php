@@ -26,11 +26,6 @@ class Image {
      * @ORM\Column(type="string", length=200)
      */
     protected $url;
-    /**
-     * @ORM\OneToOne(targetEntity="Paragraphe", mappedBy="image")
-     * @var Paragraph
-     **/
-    private $paragraphe;
     
     public function getId() {
         return $this->id;
@@ -55,19 +50,4 @@ class Image {
     public function setUrl($url) {
         $this->url = $url;
     }
-    
-    /**
-     * 
-     * @return Paragraphe
-     */
-    public function getParagraphe() {
-        return $this->paragraphe;
-    }
-
-    public function setParagraphe(Paragraph $paragraphe) {
-        $this->paragraphe = $paragraphe;
-        if ($paragraphe->getImage() !== $this) {
-            $paragraphe->setImage($this);
-        }
-    }        
 }

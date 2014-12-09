@@ -110,9 +110,6 @@ class Paragraphe {
 
     public function setImage(Image $image) {
         $this->image = $image;
-        if ($image->getParagraphe() !== $this) {
-            $image->setParagraphe($this);
-        }
     }
 
 
