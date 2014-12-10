@@ -29,7 +29,7 @@ class DossierController extends Controller {
     }
     
     /**
-     * @Route("")
+     * @Route("", name="action.liste")
      * @Template()
      */
     public function listeAction()
@@ -39,5 +39,22 @@ class DossierController extends Controller {
         $liste = $dossierRepository->findAllWithCount();
 
         return array("liste" => $liste);
+    }
+    
+    /**
+     * @Route("/{id}/delete", requirements={"id": "\d+"}, name="action.delete")
+     */
+    public function deleteAction($id)
+    {
+        /* @var $dossierRepository \QD\SuperBundle\Repository\DossierRepository */
+        $dossierRepository = $this->getDoctrine()->getRepository("QDSuperBundle:Dossier");
+        $dossier = $dossierRepository->find($id);
+        if (!$dossier) {
+            throw $this->createNotFoundException("Le dossier spécifié ({$id}) n'existe pas");
+        }
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($dossier);
+        $em->flush();
+        return $this->redirect($this->generateUrl("action.liste"));
     }
 }
