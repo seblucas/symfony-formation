@@ -32,7 +32,6 @@ class DossierRepository extends EntityRepository {
     
     /**
      * 
-     * @param type $id
      * @return array
      */
     public function findAllWithCount() {
@@ -43,6 +42,22 @@ class DossierRepository extends EntityRepository {
             ->getQuery();
         
         return $query->getResult();
+        
+    }
+    
+    /**
+     * 
+     * @param type $id
+     * @return int
+     */
+    public function deleteById($id) {
+        $query = $this->createQueryBuilder('d')
+            ->delete()
+            ->andWhere('d.id = :id')
+            ->setParameter('id', $id)
+            ->getQuery();
+        
+        return $query->execute();
         
     }
 }
