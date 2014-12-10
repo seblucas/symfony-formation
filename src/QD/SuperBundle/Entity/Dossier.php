@@ -9,7 +9,7 @@ use \Doctrine\Common\Collections\ArrayCollection;
  * Description of Dossier
  *
  * @author formation
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="QD\SuperBundle\Repository\DossierRepository")
  * @ORM\Table(name="t_dossier")
  */
 class Dossier {

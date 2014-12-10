@@ -4,9 +4,8 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('bundles/qdsuper/css/style.css') }}">
 {% endblock %}
 
-{% block title %}Page qui dit boooooooo{% endblock %}
+{% block title %}Détail dossier{% endblock %}
 
 {% block body %}
-    {{ dump(app.request) }}
-    <span class="rouge">BOOOOOOOOOOOOHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH</span>
+    <span class="rouge">Dossier</span> n° {{ id }}, {{ dossier.Titre }}
 {% endblock %}
