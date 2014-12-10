@@ -7,5 +7,11 @@
 {% block title %}Détail dossier{% endblock %}
 
 {% block body %}
+    {{ dump(dossier) }}
     <span class="rouge">Dossier</span> n° {{ id }}, {{ dossier.Titre }}
+    <ul>
+    {% for paragraphe in dossier.paragraphes %}
+        <li>{{ paragraphe.titre }}</li>
+    {% endfor %}
+    </ul>
 {% endblock %}

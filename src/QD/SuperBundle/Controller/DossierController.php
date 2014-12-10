@@ -19,8 +19,9 @@ class DossierController extends Controller {
      */
     public function detailAction($id)
     {
+        /* @var $dossierRepository \QD\SuperBundle\Repository\DossierRepository */
         $dossierRepository = $this->getDoctrine()->getRepository("QDSuperBundle:Dossier");
-        $dossier = $dossierRepository->find($id);
+        $dossier = $dossierRepository->findWithDeps($id);
         if (!$dossier) {
             throw $this->createNotFoundException("Le dossier spécifié ({$id}) n'existe pas");
         }

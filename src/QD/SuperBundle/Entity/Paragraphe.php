@@ -40,7 +40,7 @@ class Paragraphe {
      */
     private $dossier;
     /**
-     * @ORM\OneToOne(targetEntity="Image", inversedBy="paragraphe")
+     * @ORM\OneToOne(targetEntity="Image")
      * @var Image
      **/
     private $image;

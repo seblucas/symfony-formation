@@ -20,18 +20,23 @@ class DossierFixture extends AbstractFixture implements OrderedFixtureInterface 
      */
     public function load(ObjectManager $manager)
     {
-        $dossier = new Dossier();
-        $dossier->setTitre("Premier dossier");
-        $dossier->setSousTitre("Premier sous-titre");
-        $dossier->setContenu("<div>contenu</div>");
-        $dossier->setDateDebut(\DateTime::createFromFormat("d/m/Y", "1/1/2014"));
-        $dossier->setDateFin(\DateTime::createFromFormat("d/m/Y", "31/12/2014"));
-        $dossier->setTarif(22.43);
+        foreach (array ("1" => "Premier",
+                        "2" => "Deuxième",
+                        "3" => "Troisième",
+                        "4" => "Quatrième") as $key => $value) {        
+            $dossier = new Dossier();
+            $dossier->setTitre("{$value} dossier");
+            $dossier->setSousTitre("{$value} sous-titre");
+            $dossier->setContenu("<div>contenu {$key}</div>");
+            $dossier->setDateDebut(\DateTime::createFromFormat("d/m/Y", "{$key}/1/2014"));
+            $dossier->setDateFin(\DateTime::createFromFormat("d/m/Y", "2{$key}/12/2014"));
+            $dossier->setTarif(20.43 + $key);
 
-        $manager->persist($dossier);
-        $manager->flush();
-        
-        $this->addReference('dossier-1', $dossier);
+            $manager->persist($dossier);
+            $manager->flush();
+
+            $this->addReference("dossier-{$key}", $dossier);
+        }
     }
     
     /**
