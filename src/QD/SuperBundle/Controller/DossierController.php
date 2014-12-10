@@ -48,7 +48,7 @@ class DossierController extends Controller {
     {
         /* @var $dossierRepository \QD\SuperBundle\Repository\DossierRepository */
         $dossierRepository = $this->getDoctrine()->getRepository("QDSuperBundle:Dossier");
-        if ($dossierRepository->deleteById($id) != 1) {
+        if ($dossierRepository->deleteById($id) !== 1) {
             throw $this->createNotFoundException("Le dossier spécifié ({$id}) n'existe pas");
         }
         return $this->redirect($this->generateUrl("action.liste"));
