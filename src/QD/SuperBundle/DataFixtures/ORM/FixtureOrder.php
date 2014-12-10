@@ -15,5 +15,6 @@ namespace QD\SuperBundle\DataFixtures\ORM;
  */
 class FixtureOrder {
     const DOSSIER=1;
-    const PARAGRAPHE=10;
+    const PARAGRAPHE=20;
+    const IMAGE=10;
 }

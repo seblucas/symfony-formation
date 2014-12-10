@@ -14,7 +14,7 @@ use QD\SuperBundle\Entity\Paragraphe;
  *
  * @author formation
  */
-class ParagraphFixture extends AbstractFixture implements OrderedFixtureInterface {
+class ParagrapheFixture extends AbstractFixture implements OrderedFixtureInterface {
     /**
      * {@inheritDoc}
      */
@@ -26,6 +26,7 @@ class ParagraphFixture extends AbstractFixture implements OrderedFixtureInterfac
         $paragraphe->setContenu("<div>Paragraphe 1 contenu</div>");
         $paragraphe->setOrdre(1);
         $paragraphe->setDossier($this->getReference('dossier-1'));
+        $paragraphe->setImage($this->getReference('image-1'));
 
         $manager->persist($paragraphe);
         $manager->flush();

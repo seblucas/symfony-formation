@@ -1,0 +1,12 @@
+{% extends '::base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/qdsuper/css/style.css') }}">
+{% endblock %}
+
+{% block title %}Page qui dit boooooooo{% endblock %}
+
+{% block body %}
+    {{ dump(app.request) }}
+    <span class="rouge">BOOOOOOOOOOOOHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH</span>
+{% endblock %}
