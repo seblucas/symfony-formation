@@ -39,7 +39,7 @@ class DossierRepository extends EntityRepository {
         $query = $this->createQueryBuilder('d')
             ->leftJoin("d.paragraphes", "p")
             ->groupBy('d')
-            ->addSelect('count(p)')
+            ->addSelect('count(p) as nombre')
             ->getQuery();
         
         return $query->getResult();

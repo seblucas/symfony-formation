@@ -11,7 +11,7 @@
     <ul>
     {% for dossier in liste %}
         <li>
-            {{ dossier[0].titre}} ({{ dossier[1] }})
+            {{ dossier[0].titre}} ({{ dossier["nombre"] }})
         </li>
     {% endfor %}
     </ul>
