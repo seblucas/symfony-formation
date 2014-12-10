@@ -29,4 +29,20 @@ class DossierRepository extends EntityRepository {
         return $query->getOneOrNullResult();
         
     }
+    
+    /**
+     * 
+     * @param type $id
+     * @return array
+     */
+    public function findAllWithCount() {
+        $query = $this->createQueryBuilder('d')
+            ->leftJoin("d.paragraphes", "p")
+            ->groupBy('d')
+            ->addSelect('count(p)')
+            ->getQuery();
+        
+        return $query->getResult();
+        
+    }
 }

@@ -27,4 +27,17 @@ class DossierController extends Controller {
         }
         return array("id" => $id, "dossier" => $dossier);
     }
+    
+    /**
+     * @Route("")
+     * @Template()
+     */
+    public function listeAction()
+    {
+        /* @var $dossierRepository \QD\SuperBundle\Repository\DossierRepository */
+        $dossierRepository = $this->getDoctrine()->getRepository("QDSuperBundle:Dossier");
+        $liste = $dossierRepository->findAllWithCount();
+
+        return array("liste" => $liste);
+    }
 }
