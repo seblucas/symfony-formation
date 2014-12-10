@@ -19,10 +19,11 @@ class DossierRepository extends EntityRepository {
     public function findWithDeps($id) {
         $query = $this->createQueryBuilder('d')
             ->leftJoin("d.paragraphes", "p")
+            ->leftJoin("p.image", "i")
             ->andWhere('d.id = :id')
             ->setParameter('id', $id)
             ->orderBy('p.ordre', 'ASC')
-            ->addSelect('p')
+            ->addSelect('p', 'i')
             ->getQuery();
         
         return $query->getOneOrNullResult();

@@ -11,7 +11,12 @@
     <span class="rouge">Dossier</span> n° {{ id }}, {{ dossier.Titre }}
     <ul>
     {% for paragraphe in dossier.paragraphes %}
-        <li>{{ paragraphe.titre }}</li>
+        <li>
+            {% if paragraphe.image %}
+                <img src="{{ paragraphe.image.url }}" alt="{{ paragraphe.image.nom }}"/>
+            {% endif %}
+            {{ paragraphe.titre }}
+        </li>
     {% endfor %}
     </ul>
 {% endblock %}
