@@ -36,7 +36,7 @@ class Paragraphe {
     private $ordre;
     /**
      * @ORM\ManyToOne(targetEntity="Dossier", inversedBy="paragraphes")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      */
     private $dossier;
     /**

@@ -51,7 +51,7 @@ class Dossier {
      */
     protected $tarif;
     /**
-     * @ORM\OneToMany(targetEntity="Paragraphe", mappedBy="dossier")
+     * @ORM\OneToMany(targetEntity="Paragraphe", mappedBy="dossier", cascade={"persist"})
      * @var ArrayCollection
      */
     protected $paragraphes;
