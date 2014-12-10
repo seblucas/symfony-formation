@@ -25,7 +25,6 @@ class DossierRepository extends EntityRepository {
             ->addSelect('p')
             ->getQuery();
         
-        //return $query->getResult()[0];
         return $query->getOneOrNullResult();
         
     }
