@@ -1,6 +1,6 @@
 {% extends "form_div_layout.html.twig" %}
 
 {% block form_start -%}
-    {% set attr = attr | merge({novalidate: "novalidateXX"}) %}
+    {% set attr = attr | merge({novalidate: "novalidate"}) %}
     {{ parent() }}    
 {%- endblock form_start %}
