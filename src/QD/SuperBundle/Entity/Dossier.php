@@ -56,6 +56,17 @@ class Dossier {
      */
     protected $paragraphes;
     
+//    public function __clone() {
+//        // Get current collection
+//        $paragraphes = $this->getParagraphes();
+//
+//        $this->paragraphes = new ArrayCollection();
+//        foreach ($paragraphes->toArray() as $par) {
+//            $clonePar = clone $par;
+//            $this->addParagraphe($clonePar);
+//        }
+//    }
+    
     public function __construct() {
         $this->paragraphes = new ArrayCollection();
     }
@@ -132,7 +143,7 @@ class Dossier {
         return $this->paragraphes;
     }
 
-    public function setParagraphes(ArrayCollection $paragraphes) {
+    public function setParagraphes($paragraphes) {
         $this->paragraphes->clear();
         foreach ($paragraphes as $p) {
             $this->addParagraphe($p);
