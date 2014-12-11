@@ -55,7 +55,9 @@ class DossierController extends Controller {
         $form = $this->createForm(new DossierType ());
         $form->handleRequest($request);
         $dossier = 1;
+        $idiot = 2;
         if ($form->isValid()) {
+            $idiot = $form->get('idiot')->getData();
             $em = $this->getDoctrine()->getManager();
             $dossier = $form->getData();
             $em->persist($dossier);
@@ -63,7 +65,7 @@ class DossierController extends Controller {
             //return $this->redirect($this->generateUrl("action.liste"));
         }
         
-        return array('form' => $form->createView(), 'data' => $dossier);
+        return array('form' => $form->createView(), 'data' => $dossier, "idiot" => $idiot);
     }
     
     /**
@@ -83,7 +85,7 @@ class DossierController extends Controller {
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $dossier = $form->getData();
-            $em->persist($dossier);
+            //$em->persist($dossier);
             $em->flush();
             //return $this->redirect($this->generateUrl("action.liste"));
         }
