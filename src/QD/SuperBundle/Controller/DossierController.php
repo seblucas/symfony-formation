@@ -67,6 +67,31 @@ class DossierController extends Controller {
     }
     
     /**
+     * @Route("/{id}/edit", requirements={"id": "\d+"}, name="action.edit")
+     * @Template("QDSuperBundle:Dossier:new.html.twig")
+     */
+    public function editAction(Request $request, $id)
+    {
+        /* @var $dossierRepository DossierRepository */
+        $dossierRepository = $this->getDoctrine()->getRepository("QDSuperBundle:Dossier");
+        /* @var $dossier Dossier */
+        $dossier = $dossierRepository->findWithDeps($id);
+        
+        $form = $this->createForm(new DossierType (), $dossier);
+        $form->handleRequest($request);
+        $dossier = 1;
+        if ($form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $dossier = $form->getData();
+            $em->persist($dossier);
+            $em->flush();
+            //return $this->redirect($this->generateUrl("action.liste"));
+        }
+        
+        return array('form' => $form->createView(), 'data' => $dossier);
+    }
+    
+    /**
      * @Route("/new")
      * @Template("QDSuperBundle:")
      * @Method({"POST"})
