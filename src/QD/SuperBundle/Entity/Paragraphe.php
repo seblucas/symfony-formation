@@ -40,7 +40,7 @@ class Paragraphe {
      */
     private $dossier;
     /**
-     * @ORM\OneToOne(targetEntity="Image")
+     * @ORM\OneToOne(targetEntity="Image", cascade={"persist"})
      * @var Image
      **/
     private $image;
