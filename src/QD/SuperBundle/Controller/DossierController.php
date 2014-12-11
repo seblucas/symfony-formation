@@ -5,9 +5,11 @@ namespace QD\SuperBundle\Controller;
 use QD\SuperBundle\Entity\Dossier;
 use QD\SuperBundle\Form\Type\DossierType;
 use QD\SuperBundle\Repository\DossierRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Description of DossierController
@@ -48,12 +50,34 @@ class DossierController extends Controller {
      * @Route("/new", name="action.new")
      * @Template()
      */
-    public function newAction()
+    public function newAction(Request $request)
     {
         $form = $this->createForm(new DossierType ());
+        $form->handleRequest($request);
+        $dossier = 1;
+        if ($form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $dossier = $form->getData();
+            $em->persist($dossier);
+            $em->flush();
+            //return $this->redirect($this->generateUrl("action.liste"));
+        }
         
-        return array('form' => $form->createView());
+        return array('form' => $form->createView(), 'data' => $dossier);
     }
+    
+    /**
+     * @Route("/new")
+     * @Template("QDSuperBundle:")
+     * @Method({"POST"})
+     */
+//    public function addNewAction()
+//    {
+//        $form = $this->createForm(new DossierType ());
+//        
+//        return array('form' => $form->createView());
+//    }
+
     
     /**
      * @Route("/{id}/delete", requirements={"id": "\d+"}, name="action.delete")
