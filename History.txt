@@ -1,0 +1,295 @@
+    1  sudo apt-get update
+    2  apt-get upgrade
+    3  sudo apt-get upgrade
+    4  sudo reboot
+    5  sudo apt-get update
+    6  sudo apt-get upgrade 
+    7  sudo apt-get autoremove --purge
+    8  sudo apt-get autoclean
+    9  sudo apt-get install chromium-browser-l10n 
+   10  sudo apt-get install apache2 php5 mysql-server libapache2-mod-php5 php5-mysql
+   11  sudo nano /etc/apache2/apache2.conf 
+   12  sudo service apache2 restart
+   13  php -v
+   14  sudo apt-get install git
+   15  sudo halt
+   16  sudo add-apt-repository ppa:webupd8team/java
+   17  sudo apt-get update
+   18  sudo apt-get install oracle-java8-installer 
+   19  cd /usr/local/bin/
+   20  ll
+   21  cd ..
+   22  chown -R formation:formation bin/
+   23  sudo chown -R formation:formation bin/
+   24  composer self-update
+   25  exit
+   26  cd Téléchargements/
+   27  ls
+   28  ll
+   29  chmod +x netbeans-8.0.2-php-linux.sh 
+   30  ./netbeans-8.0.2-php-linux.sh 
+   31  rm *
+   32  ll
+   33  cd ..
+   34  ll
+   35  ls
+   36  mkdir Workspace
+   37  cd Workspace/
+   38  git clone https://github.com/symfony/symfony-standard.git
+   39  sudo apt-get install curl
+   40  curl -sS https://getcomposer.org/installer | php
+   41  sudo mv composer.phar /usr/local/bin/composer
+   42  cd symfony-standard/
+   43  composer install
+   44  sudo apt-get install acl
+   45  sudo nano /etc/fstab
+   46  sudo reboot
+   47  cd /var/log/apache2/
+   48  ll
+   49  cat symfony_standard_error.log 
+   50  cd
+   51  cd Workspace/
+   52  ll
+   53  ll symfony-standard/web/
+   54  cat /var/log/apache2/symfony_standard_access.log 
+   55  cd
+   56  ll
+   57  cd Workspace/
+   58  ll
+   59  cd symfony-standard/
+   60  ll
+   61  sudo nano /etc/apache2/sites-available/symfony-standard.conf 
+   62  sudo service apache2 restart
+   63  ll
+   64  sudo setfacl -R -m u:www-data:rwX -m u:formation:rwX app/cache app/logs
+   65  sudo setfacl -dR -m u:www-data:rwX -m u:formation:rwX app/cache app/logs
+   66  php app/check.php 
+   67  cd /etc/php5/
+   68  ll
+   69  sudo cp cli/php.ini php.ini
+   70  sudo nano php.ini 
+   71  cd cli/
+   72  sudo rm php.ini 
+   73  sudo ln -s ../php.ini php.ini
+   74  cd ../apache2/
+   75  ll
+   76  sudo rm php.ini 
+   77  sudo ln -s ../php.ini php.ini
+   78  sudo service apache2 restart
+   79  cd
+   80  cd Workspace/symfony-standard/
+   81  php app/check.php 
+   82  sudo apt-get install php5-int
+   83  sudo apt-get install php5-intl
+   84  sudo service apache2 restart
+   85  php app/check.php 
+   86  exit
+   87  cd /etc/apache2/sites-available/
+   88  ll
+   89  cd ../sites-enabled/
+   90  ll
+   91  rm 000-default.conf 
+   92  sudo rm 000-default.conf 
+   93  cd ../sites-available/
+   94  ll
+   95  sudo mv 000-default.conf default.conf
+   96  ll
+   97  sudo nano symfony-standard.local
+   98  cd ../sites-enabled/
+   99  cd ../sites-available/
+  100  sudo mv symfony-standard.local symfony-standard.conf
+  101  cd ../sites-enabled/
+  102  sudo ln -s ../sites-available/symfony-standard.conf symfony-standard.conf
+  103  ll
+  104  sudo service apache2 restart
+  105  sudo nano /etc/hosts
+  106  sudo nano symfony-standard.conf 
+  107  sudo a2enmod rewrite 
+  108  sudo service apache2 restart
+  109  sudo nano symfony-standard.conf 
+  110  sudo service apache2 restart
+  111  exit
+  112  sudo apt-get install php5-xdebug 
+  113  exit
+  114  cd Workspace/symfony-standard/
+  115  php app/console doctrine:database:create
+  116  exit
+  117  cd /etc/php5/mods-available/
+  118  ll
+  119  sudo nano xdebug.ini 
+  120  sudo service apache2 restart
+  121  cd Workspace/symfony-standard/
+  122  phpunit -c app
+  123  cd
+  124  wget https://phar.phpunit.de/phpunit.phar
+  125  chmod +x phpunit.phar
+  126  mv phpunit.phar /usr/local/bin/phpunit
+  127  phpunit --version
+  128  cd Workspace/symfony-standard/
+  129  phpunit -c app
+  130  exit
+  131  ls
+  132  cd Workspace/
+  133  ls
+  134  composer create-project symfony/framework-standard-edition symfony-sl  '~2.6'
+  135  top
+  136  cd /etc/apache2/sites-available/
+  137  ls
+  138  cp symfony-standard.conf symfony-sl.conf 
+  139  sudo cp symfony-standard.conf symfony-sl.conf
+  140  sudo vi symfony-sl.conf 
+  141  sudo a2ensite symfony-sl.conf
+  142  sudo service apache2 reload
+  143  sudo vi /etc/hosts
+  144  ping symfony-sl.local
+  145  ls
+  146  pwd
+  147  mkdir src
+  148  cd src/
+  149  ls
+  150  composer --version
+  151  composer --self-update
+  152  composer self-update
+  153  cd
+  154  cat /var/log/apache2/symfony_sl_error.log 
+  155  cd 
+  156  cd Workspace/
+  157  cd symfony-sl/
+  158  ls
+  159  cd ..
+  160  ls -la
+  161  more /etc/fstab
+  162  setfacl -R -m u:apache:rwX -m u:formation:rwX app/cache app/logs
+  163  sudo setfacl -R -m u:apache:rwX -m u:formation:rwX app/cache app/logs
+  164  sudo setfacl -R u:apache:rwX -m u:formation:rwX app/cache app/logs
+  165  sudo setfacl -R -m u:www-data:rwX -m u:formation:rwX app/cache app/logs
+  166  cd symfony-sl/
+  167  sudo setfacl -R -m u:www-data:rwX -m u:formation:rwX app/cache app/logs
+  168  sudo setfacl -dR -m u:www-data:rwX -m u:formation:rwX app/cache app/logs
+  169  cat /var/log/apache2/symfony_sl_error.log 
+  170  pĥp app/console doctrine:database:create
+  171  php app/console doctrine:database:create
+  172  php app/check.php
+  173  php app/console generate:bundle
+  174  php app/console assets:install --symlink web
+  175  php app/console debug:router
+  176  cd Workspace/symfony-sl
+  177  php app/console cache:clear
+  178  php app/console cache:clear --env=prod
+  179  php app/console doctrine:schema:validate
+  180  php app/console doctrine:schema:update
+  181  php app/console doctrine:schema:update --dump-sql
+  182  php app/console doctrine:schema:update --force
+  183  sudo apt-get install phpmyadmin
+  184  php app/console doctrine:schema:validate
+  185  php app/console doctrine:schema:update --dump-sql
+  186  php app/console cache:clear --env=prod
+  187  php app/console cache:clear --env=dev
+  188  php app/console doctrine:schema:update --dump-sql
+  189  php app/console doctrine:schema:update --force
+  190  php app/console doctrine:schema:validate
+  191  php app/console doctrine:schema:update --dump-sql
+  192  php app/console doctrine:schema:update --force
+  193  php app/console doctrine:schema:validate
+  194  php app/console doctrine:schema:update --dump-sql
+  195  php app/console doctrine:schema:validate
+  196  php app/console doctrine:schema:update --dump-sql
+  197  php app/console doctrine:schema:update --force
+  198  php app/console doctrine:schema:validate
+  199  git init
+  200  git addremove -a
+  201  git add -a
+  202  git add -A
+  203  git status
+  204  git commit -am "First commit"
+  205  git config --global user.email "you@example.com"
+  206  git config --global user.name "Your Name"
+  207  git commit -am "First commit"
+  208  php app/console doctrine:schema:validate
+  209  git status
+  210  git commit -am "OnetoOne unidirectionnel"
+  211  composer update
+  212  git diff composer.lock
+  213  php app/console doctrine:fixture:load
+  214  git add -A
+  215  git commit -am "Gestion des données de test (fixtures)"
+  216  php app/console doctrine:fixture:load
+  217  git status
+  218  git add -a
+  219  git add -A
+  220  git commit -am "Ajout des fixtures avec dépendances et gestion de l'ordre"
+  221  git status
+  222  git diff
+  223  git commit -am "Ajout des fixtures avec dépendances et gestion de l'ordre (oubli)"
+  224  cd Workspace/symfony-s
+  225  cd Workspace/symfony-sl
+  226  ls
+  227  git status
+  228  php app/console doctrine:database:drop
+  229  php app/console doctrine:database:drop --force
+  230  set
+  231  env
+  232  php app/console doctrine:database:create
+  233  composer update
+  234  php app/console doctrine:migrations:status
+  235  php app/console doctrine:migrations:generate
+  236  php app/console doctrine:migrations:diff
+  237  php app/console doctrine:migrations:migrate
+  238  git status
+  239  git add -A
+  240  git commit -am "Ajout du process de migration http://symfony.com/doc/master/bundles/DoctrineMigrationsBundle/index.html"
+  241  php app/console doctrine:fixture:load
+  242  git status
+  243  git add src/QD/SuperBundle/DataFixtures/ORM/FixtureOrder.php
+  244  git add src/QD/SuperBundle/DataFixtures/ORM/ImageFixture.php
+  245  git add src/QD/SuperBundle/DataFixtures/ORM/ParagrapheFixture.php
+  246  git status
+  247  git commit -m "Ajout des données par defaut pour les images"
+  248  git status
+  249  git add -A
+  250  git status
+  251  git commit -am "Ajout d'un controlleur qui va lire des choses dans la BDD"
+  252  git status
+  253  git commit -am "Gestion de l'exception en cas d'élement non trouvé"
+  254  git status
+  255  php app/console doctrine:fixture:load
+  256  git status
+  257  git commit -am "Ajout du premier select avec dépendances plus correction de bug sur le lien image. http://symfony.com/doc/current/book/doctrine.html"
+  258  git commit -am "Code en commentaire"
+  259  git status
+  260  git commit -am "Ajout des image"
+  261  git status
+  262  git add -A
+  263  git commit -am "Ajout de l'écran de liste"
+  264  git commit -am "Nommage du nombre d'éléments"
+  265  php app/console doctrine:schema:validate
+  266  php app/console doctrine:migrations:diff
+  267  php app/console doctrine:schema:validate
+  268  php app/console doctrine:migrations:diff
+  269  php app/console doctrine:migrations:generate
+  270  php app/console doctrine:migrations:diff
+  271  php app/console doctrine:migrations:migrate
+  272  fit status
+  273  git status
+  274  git add -A
+  275  git commit -am "Gestion des relations"
+  276  git status
+  277  git diff
+  278  git commit -am "Ajout de la suppression (crade)"
+  279  git commit -am "Ajout de la suppression plus maligne et optimisée"
+  280  git diff
+  281  git commit -am "Plus propre dans la comparaison"
+  282  php app/console doctrine:fixture:load
+  283  cd Workspace/
+  284  cd symfony-s
+  285  cd symfony-sl/
+  286  fir status
+  287  git status
+  288  ggit
+  289  qgit
+  290  sudo apt-cache search git
+  291  sudo apt-cache search ggit
+  292  sudo apt-cache search gitg
+  293  sudo apt-get install  gitg
+  294  gitg
+  295  history
