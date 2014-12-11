@@ -20,7 +20,7 @@ class DossierType extends AbstractType {
             ->add('contenu', 'textarea')
             ->add('dateDebut', 'date', array('label' => 'Date de début'))
             ->add('dateFin', 'date', array('label' => 'Date de fin'))
-            ->add('urlImage', 'url', array('required' => false, 'label' => "Url de l''image"))
+            ->add('urlImage', 'url', array('required' => false, 'label' => "Url de l'image"))
             ->add('tarif', 'money')
             ->add('Sauvegarde', 'submit');
     }
