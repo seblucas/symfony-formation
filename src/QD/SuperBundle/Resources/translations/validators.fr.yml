@@ -2,3 +2,4 @@
 ---
 dossier:
     titre: "Le titre est obligatoire"
+    urlImage: "Moins de {{ limit }} caractères"

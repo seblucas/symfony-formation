@@ -48,7 +48,8 @@ class Dossier {
     /**
      * @ORM\Column(type="string", length=200, nullable=true)
      * @Assert\Length(
-     *      max = 200
+     *      max = 10,
+     *      maxMessage="dossier.urlImage"
      * )
      */
     protected $urlImage;
