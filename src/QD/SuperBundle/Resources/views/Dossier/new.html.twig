@@ -80,6 +80,8 @@
 {% block body %}
     {{ dump(form) }}
     {{ dump(data) }}
-    {{ dump(idiot) }}
+    {% if idiot is defined %}
+        {{ dump(idiot) }}
+    {% endif %}
     {{ form(form) }} 
 {% endblock %}

@@ -81,11 +81,9 @@ class DossierController extends Controller {
         
         $form = $this->createForm(new DossierType (), $dossier);
         $form->handleRequest($request);
-        $dossier = 1;
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $dossier = $form->getData();
-            //$em->persist($dossier);
+//            $em->persist($dossier);
             $em->flush();
             //return $this->redirect($this->generateUrl("action.liste"));
         }
