@@ -4,6 +4,7 @@ namespace QD\SuperBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use \Doctrine\Common\Collections\ArrayCollection;
+use \Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Description of Dossier
@@ -11,6 +12,7 @@ use \Doctrine\Common\Collections\ArrayCollection;
  * @author formation
  * @ORM\Entity(repositoryClass="QD\SuperBundle\Repository\DossierRepository")
  * @ORM\Table(name="t_dossier")
+ * 
  */
 class Dossier {
     //put your code here
@@ -22,27 +24,47 @@ class Dossier {
     protected $id;
     /**
      * @ORM\Column(type="string", length=100)
+     * @Assert\NotBlank
+     * @Assert\Length(
+     *      max = 100
+     * )
      */
     protected $titre;
     /**
      * @ORM\Column(type="string", length=100, nullable=true)
+     * @Assert\Length(
+     *      max = 100
+     * )
      */
     protected $sousTitre;
     /**
      * @ORM\Column(type="string", length=1000)
+     * @Assert\NotBlank
+     * @Assert\Length(
+     *      max = 1000
+     * )
      */
     protected $contenu;
     /**
      * @ORM\Column(type="string", length=200, nullable=true)
+     * @Assert\Length(
+     *      max = 200
+     * )
      */
     protected $urlImage;
     /**
      * @ORM\Column(type="date")
+     * @Assert\Date()
+     * @Assert\Expression(
+     *      "this.getDateDebut() and this.getDateFin() and this.getDateFin() >= this.getDateDebut()",
+     *      message="Cohérence de date"
+     * )
      * @var \DateTime
      */
     protected $dateDebut;
     /**
      * @ORM\Column(type="date")
+     * @Assert\Date()
      * @var \DateTime
      */
     protected $dateFin;
