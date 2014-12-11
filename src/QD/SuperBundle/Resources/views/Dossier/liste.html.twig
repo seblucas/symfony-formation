@@ -11,7 +11,8 @@
     <ul>
     {% for dossier in liste %}
         <li>
-            {{ dossier[0].titre}} ({{ dossier["nombre"] }}) <a href="{{ path("action.delete", {id: dossier[0].id}) }}">DELETE</a>
+            {{ dossier[0].titre}} ({{ dossier["nombre"] }}) <a href="{{ path("action.delete", {id: dossier[0].id}) }}">DELETE</a> <a href="{{ path("action.incremente", {id: dossier[0].id}) }}">INCREMENTE</a>
+            <a href="{{ path("action.clone", {id: dossier[0].id}) }}">CLONE</a>
         </li>
     {% endfor %}
     </ul>

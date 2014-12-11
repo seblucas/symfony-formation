@@ -1,0 +1,12 @@
+{% extends '::base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/qdsuper/css/style.css') }}">
+{% endblock %}
+
+{% block title %}Liste dossier{% endblock %}
+
+{% block body %}
+    {{ dump(form) }}
+    {{ form(form) }} 
+{% endblock %}
