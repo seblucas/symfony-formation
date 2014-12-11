@@ -70,7 +70,6 @@ class Dossier {
     protected $dateFin;
     /**
      * @ORM\Column(type="decimal", scale=2)
-     * @Assert\Currency
      */
     protected $tarif;
     /**
