@@ -37,7 +37,7 @@ class DossierType extends AbstractType {
     {
         //parent::setDefaultOptions($resolver);
         $resolver->setDefaults(array('data_class' => 'QD\SuperBundle\Entity\Dossier',
-                                     'validation_groups' => array('Default')));
+                                     'validation_groups' => array('Default', 'test')));
     }
     
     public function getName() {
