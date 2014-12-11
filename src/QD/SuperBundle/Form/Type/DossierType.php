@@ -22,6 +22,7 @@ class DossierType extends AbstractType {
             ->add('dateFin', 'date', array('label' => 'Date de fin'))
             ->add('urlImage', 'url', array('required' => false, 'label' => "Url de l'image"))
             ->add('tarif', 'money')
+            ->add('paragraphes', 'collection', array('type' => new ParagrapheType(), "allow_add" => true, "allow_delete" => true))
             ->add('Sauvegarde', 'submit');
     }
     
