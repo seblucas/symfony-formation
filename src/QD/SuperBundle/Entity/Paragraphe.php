@@ -20,18 +20,30 @@ class Paragraphe {
     private $id;
     /**
      * @ORM\Column(type="string", length=100)
+     * @Assert\NotBlank
+     * @Assert\Length(
+     *      max = 100
+     * )
      */
     protected $titre;
     /**
      * @ORM\Column(type="string", length=100, nullable=true)
+     * @Assert\Length(
+     *      max = 100
+     * )
      */
     protected $sousTitre;
     /**
      * @ORM\Column(type="string", length=1000)
+     * @Assert\NotBlank
+     * @Assert\Length(
+     *      max = 1000
+     * )
      */
     protected $contenu;
     /**
      * @ORM\Column(type="integer")
+     * @Assert\NotBlank
      */
     private $ordre;
     /**

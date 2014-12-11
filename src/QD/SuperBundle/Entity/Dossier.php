@@ -70,10 +70,12 @@ class Dossier {
     protected $dateFin;
     /**
      * @ORM\Column(type="decimal", scale=2)
+     * @Assert\Currency
      */
     protected $tarif;
     /**
      * @ORM\OneToMany(targetEntity="Paragraphe", mappedBy="dossier", cascade={"persist"})
+     * @Assert\Valid
      * @var ArrayCollection
      */
     protected $paragraphes;
