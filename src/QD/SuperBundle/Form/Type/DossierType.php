@@ -15,6 +15,7 @@ class DossierType extends AbstractType {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('id', 'text', array('disabled' => true))
             ->add('titre')
             ->add('sousTitre', 'text', array('required' => false, 'label' => 'Sous-titre'))
             ->add('contenu', 'textarea')
@@ -26,6 +27,7 @@ class DossierType extends AbstractType {
             ->add('paragraphes', 'collection', array('type' => new ParagrapheType(), 
                                                      "allow_add" => true, 
                                                      "allow_delete" => true,
+                                                     "by_reference" => false
                 ))
             ->add('Sauvegarde', 'submit');
     }
