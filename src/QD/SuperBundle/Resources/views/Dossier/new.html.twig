@@ -78,6 +78,7 @@
 {% block title %}Liste dossier{% endblock %}
 
 {% block body %}
+    {{ "homepage.titre" | trans }}
     {{ dump(form) }}
     {{ dump(data) }}
     {% if idiot is defined %}

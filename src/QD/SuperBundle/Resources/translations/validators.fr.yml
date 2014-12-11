@@ -1,0 +1,4 @@
+## YAML Template.
+---
+dossier:
+    titre: "Le titre est obligatoire"

@@ -24,7 +24,7 @@ class Dossier {
     protected $id;
     /**
      * @ORM\Column(type="string", length=100)
-     * @Assert\NotBlank(groups={"test"})
+     * @Assert\NotBlank(groups={"test"}, message="dossier.titre")
      * @Assert\Length(
      *      max = 100
      * )
