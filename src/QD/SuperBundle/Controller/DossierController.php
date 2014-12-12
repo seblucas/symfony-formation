@@ -69,7 +69,7 @@ class DossierController extends Controller {
     }
     
     /**
-     * @Route("/new2", name="action.new")
+     * @Route("/new2", name="action.new2")
      */
     public function new2Action()
     {
