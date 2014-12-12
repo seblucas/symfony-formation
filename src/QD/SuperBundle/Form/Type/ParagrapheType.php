@@ -2,6 +2,7 @@
 
 namespace QD\SuperBundle\Form\Type;
 
+use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
@@ -19,7 +20,13 @@ class ParagrapheType extends AbstractType {
             ->add('sousTitre', 'text', array('label' => 'Sous-titre'))
             ->add('contenu', 'textarea')
             ->add('ordre', 'number')
-            ->add('image', new ImageType());
+            ->add('image', 'entity', array('class' => 'QD\SuperBundle\Entity\Image',
+                                           'property' => 'nom',
+                                           'empty_value'  => "Rien",
+                                           'query_builder' => function(EntityRepository $er) {
+                                                return $er->createQueryBuilder('u')
+                                                          ->orderBy('u.nom', 'ASC');
+                                           }));
             //->add('image', new ImageType());
     }
     
