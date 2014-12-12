@@ -62,10 +62,33 @@ class DossierController extends Controller {
             $dossier = $form->getData();
             $em->persist($dossier);
             $em->flush();
-            //return $this->redirect($this->generateUrl("action.liste"));
+            return $this->redirect($this->generateUrl("action.liste"));
         }
         
         return array('form' => $form->createView(), 'data' => $dossier, "idiot" => $idiot);
+    }
+    
+    /**
+     * @Route("/new2", name="action.new")
+     */
+    public function new2Action()
+    {
+        return $this->get("qd_super.dossier_create")->createDossier();
+    }
+    
+    /**
+     * @Route("/{id}/mail", requirements={"id": "\d+"}, name="action.mail")
+     */
+    public function mailAction($id)
+    {
+        /* @var $dossierRepository DossierRepository */
+        $dossierRepository = $this->getDoctrine()->getRepository("QDSuperBundle:Dossier");
+        /* @var $dossier Dossier */
+        $dossier = $dossierRepository->findWithDeps($id);
+        
+        $this->get("qd_super.dossier_mail")->envoiDossier($dossier);
+        
+        return $this->redirect($this->generateUrl("action.liste"));
     }
     
     /**
